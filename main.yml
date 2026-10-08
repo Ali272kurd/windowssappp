@@ -28,7 +28,7 @@ jobs:
         run: |
           $username = "aliiiwyddd"
           $password = "ali1223"
-          $securePass = ConvertTo-SecureString$password -AsPlainText -Force
+          $securePass =$password | ConvertTo-SecureString -AsPlainText -Force
           
           # Remove user if already exists to prevent errors
           if (Get-LocalUser -Name $username -ErrorAction SilentlyContinue) {
@@ -74,7 +74,7 @@ jobs:
           }
           Write-Host "TCP connectivity successful!"
 
-      - name: Maintain Connection
+      - name: Maintain Connections
         run: |
           Write-Host "`n=== RDP ACCESS ==="
           Write-Host "Address: $env:TAILSCALE_IP"
